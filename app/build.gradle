@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    //레트로핏핏
+    //레트로핏
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     //gson 컨버터 json과 객체 왔다갔다 하게해줌
@@ -56,6 +56,10 @@ dependencies {
     //로깅 인터셉터 레트로핏에서 서버로 통신을 할 때 인터셉터를 할 수 있게 해줌
     //로그를 확인하는 인터셉터이다.(헤더 바디 이런 거)
     implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+
+    //글라이드
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 
 
 }

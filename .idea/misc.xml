@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/OK/AndroidStudioProjects/Kotlintest3/app/src/main/res/drawable-v24/rounded_bg_grey.xml" value="0.2265" />
+        <entry key="..\:/Users/OK/AndroidStudioProjects/Kotlintest3/app/src/main/res/drawable/rounded_bg_pink.xml" value="0.2265" />
         <entry key="..\:/Users/OK/AndroidStudioProjects/Kotlintest3/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/OK/AndroidStudioProjects/Kotlintest3/app/src/main/res/layout/layout_button_search.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/OK/AndroidStudioProjects/Kotlintest3/app/src/main/res/layout/layout_photo_item.xml" value="0.25" />
+        <entry key="..\:/Users/OK/AndroidStudioProjects/Kotlintest3/app/src/main/res/layout/photo_collection.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/OK/AndroidStudioProjects/Kotlintest3/app/src/main/res/menu/top_app_bar.xml" value="0.12161458333333333" />
       </map>
     </option>
   </component>

@@ -1,6 +1,10 @@
 package com.example.kotlintest3.retrofit
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
+import com.example.kotlintest3.App
 import com.example.kotlintest3.utils.API
 import com.example.kotlintest3.utils.Constants.TAG
 import com.example.kotlintest3.utils.isJsonArray
@@ -72,7 +76,16 @@ object RetrofitClient {
                 val addedUrl = originalRequest.url.newBuilder().addQueryParameter("client_id", API.CLIENT_ID).build()
                 val finalRequest = originalRequest.newBuilder().url(addedUrl).method(originalRequest.method, originalRequest.body).build()
 
-                return chain.proceed(finalRequest)
+                val response = chain.proceed(finalRequest)
+
+                if(response.code != 200){
+
+                    Handler(Looper.getMainLooper()).post {
+                        Toast.makeText(App.instance, "${response.code} 에러 입니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                return  response
             }
         })
 
