@@ -9,6 +9,9 @@ import com.example.kotlintest3.model.Photo
 import com.example.kotlintest3.recyclerview.PhotoGridRecyclerViewAdapter
 import com.example.kotlintest3.utils.Constants.TAG
 
+/**
+ * 4. 버튼 눌렀을 때 intent 받아오는 클래스
+ */
 class PhotoCollectionActivity:AppCompatActivity() {
     private lateinit var binding: PhotoCollectionBinding
 

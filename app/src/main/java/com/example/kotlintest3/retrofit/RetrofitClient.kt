@@ -78,10 +78,11 @@ object RetrofitClient {
 
                 val response = chain.proceed(finalRequest)
 
+                //1. 리스폰스 에러 잡기 401이여도 통신은 됐는데 200이외에는 오류문 띄우기
                 if(response.code != 200){
 
-                    Handler(Looper.getMainLooper()).post {
-                        Toast.makeText(App.instance, "${response.code} 에러 입니다.", Toast.LENGTH_SHORT).show()
+                    Handler(Looper.getMainLooper()).post { //UI쓰레드로 돌려서 돌아가면서 오류나게함 안 쓰면 아예 앱 실행 오류가 남
+                        Toast.makeText(App.instance, "${response.code} 에러 입니다.", Toast.LENGTH_SHORT).show() //2.앱이 아닐 때 context를 가져오기 위헤 App을 전역으로 하나 만듦
                     }
                 }
 

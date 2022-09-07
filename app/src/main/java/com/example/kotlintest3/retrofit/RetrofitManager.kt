@@ -20,7 +20,7 @@ class RetrofitManager {
     private val iRetrofit : IRetrofit? = RetrofitClient.getClient(API.BASE_URL)?.create(IRetrofit::class.java)
 
     //사진 검색 api 호출
-    fun searchPhotos(searchTerm: String?, completion: (RESPONSE_STATUS, ArrayList<Photo>?) -> Unit){
+    fun searchPhotos(searchTerm: String?, completion: (RESPONSE_STATUS, ArrayList<Photo>?) -> Unit){ //기존에 String으로 받은 건 안에 Json보려고 했던 거고 실제로 받아온 걸 ArrayList로 넣는다.
 
         val term = searchTerm ?: "" //searchTerm이 비어있으면 ""를 넣어라
         val call = iRetrofit?.searchPhotos(searchTerm = term) ?: return
@@ -31,15 +31,15 @@ class RetrofitManager {
             override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 Log.d(TAG, "RetrofitManager - onResponse() called / response: ${response.body()}")
 
-                when(response.code()){
+                when(response.code()){ //Client에서 들어온 코드가 200일 때만 실행하게 됨. 안정성 부여
                     200 -> {
 
                         response.body()?.let{
-                            var parsedPhotoDataArray = ArrayList<Photo>()
-                            val body = it.asJsonObject
-                            val results = body.getAsJsonArray("results")
+                            var parsedPhotoDataArray = ArrayList<Photo>() //받아올 parse를 arraylist로 만듦
+                            val body = it.asJsonObject //전체 response 바디를 가져온다.
+                            val results = body.getAsJsonArray("results") //그 부분에서 results인 부분만 추출한다.
                             
-                            val total = body.get("total").asInt
+                            val total = body.get("total").asInt //그 부분에서 total만 추출한다.
 
                             Log.d(TAG, "onResponse: /total $total")
 
@@ -60,7 +60,7 @@ class RetrofitManager {
 
                                     val createdAt = resultItemObject.get("created_at").asString
 
-                                    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                                    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss") //날짜포매팅 설정하기
                                     val formatter = SimpleDateFormat("yyyy년\nMM월 dd일")
 
                                     val outputDateString= formatter.format(parser.parse(createdAt))

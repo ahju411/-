@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
             this.handlerSearchBtnUi()
 
-            val userSearchInput = binding.searchEditText.text.toString()
+            val userSearchInput = binding.searchEditText.text.toString() //방금 검색한 거
 
             //사진 검색 api 호출
             RetrofitManager.instance.searchPhotos(searchTerm = binding.searchEditText.text.toString(), completion = {
@@ -90,11 +90,11 @@ class MainActivity : AppCompatActivity() {
 
                 when(responseState){
                     RESPONSE_STATUS.OKAY->{
-                        Log.d(TAG, "api 호출 성공 : ${responseDataArrayList?.size}")
+                        Log.d(TAG, "api 호출 성공 : ${responseDataArrayList?.size}") //처음에 body?.size로 10개 들어오는 거 확인해야함
 
                         val intent = Intent(this, PhotoCollectionActivity::class.java)
 
-                        val bundle = Bundle()
+                        val bundle = Bundle() //번들로 데이터 보내기
 
                         bundle.putSerializable("photo_array_list",responseDataArrayList)
 
@@ -114,6 +114,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 binding.includeBtn.btnProgress.visibility = View.INVISIBLE
+                binding.includeBtn.btnSearch.visibility = View.VISIBLE
                 binding.includeBtn.btnSearch.text = "검색"
                 binding.searchEditText.setText("")
 
@@ -127,7 +128,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handlerSearchBtnUi(){
         binding.includeBtn.btnProgress.visibility = View.VISIBLE
-        //binding.includeBtn.btnSearch.visibility = View.INVISIBLE
+        binding.includeBtn.btnSearch.visibility = View.INVISIBLE
         binding.includeBtn.btnSearch.text = ""
 //        Handler(Looper.getMainLooper()).postDelayed({
 //            binding.includeBtn.btnProgress.visibility = View.INVISIBLE
